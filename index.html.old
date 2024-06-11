@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO|1</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            padding: 20px;
+        }
+        .cursor {
+            display: inline-block;
+            background-color: #00FF00;
+            width: 10px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .cursor {
+            animation: blink 1s step-start infinite;
+        }
+        input {
+            background-color: black;
+            color: #00FF00;
+            border: none;
+            border-bottom: 1px solid #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <div class="cursor" id="cursor"></div>
+    <div id="input-container" style="display: none;">
+        <span>Type your name: </span>
+        <input type="text" id="name-input" />
+    </div>
+    <script>
+        const text = "Hello, welcome to IO|1... @#%@$#$#^&&&**()(*&^%$#!!@#E$connecting@#";
+        let index = 0;
+        const terminal = document.getElementById('terminal');
+        const cursor = document.getElementById('cursor');
+        const inputContainer = document.getElementById('input-container');
+        const nameInput = document.getElementById('name-input');
+
+        function type() {
+            if (index < text.length) {
+                terminal.innerHTML += text[index];
+                index++;
+                setTimeout(type, 150);
+            } else {
+                cursor.style.display = 'none';
+                inputContainer.style.display = 'block';
+                nameInput.focus();
+            }
+        }
+
+        window.onload = type;
+    </script>
+</body>
+</html>
+

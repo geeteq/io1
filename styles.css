@@ -1,0 +1,136 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.manekineko {
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+
+.body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0 0 100px 100px;
+}
+
+.head {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.ear {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid black;
+    transform: rotate(45deg);
+}
+
+.ear.left {
+    top: -15px;
+    left: 10px;
+}
+
+.ear.right {
+    top: -15px;
+    right: 10px;
+}
+
+.face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.eye {
+    position: absolute;
+    top: 40px;
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.eye.left {
+    left: 30px;
+}
+
+.eye.right {
+    right: 30px;
+}
+
+.nose {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.mouth {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    width: 20px;
+    height: 10px;
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px;
+    transform: translateX(-50%);
+}
+
+.arm {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 60px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: wave 1s infinite alternate;
+}
+
+.bell {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: gold;
+    border: 2px solid black;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes wave {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(-20deg);
+    }
+}
+

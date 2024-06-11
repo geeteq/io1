@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black;
+}
+
+.scene {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotateScene 20s infinite linear;
+}
+
+.shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid magenta;
+    transform-style: preserve-3d;
+    animation: morphShape 5s infinite ease-in-out;
+}
+
+.shape1 {
+    transform: rotateX(0deg) rotateY(0deg);
+    animation-delay: 0s;
+    border: 3px solid red;
+}
+
+.shape2 {
+    transform: rotateX(120deg) rotateY(120deg);
+    animation-delay: 1.5s;
+    border: 3px solid cyan;
+}
+}
+
+.shape3 {
+    transform: rotateX(240deg) rotateY(240deg);
+    animation-delay: 3s;
+    border: 3px solid cyan;
+}
+
+@keyframes rotateScene {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+@keyframes morphShape {
+    0%, 100% {
+        transform: translateZ(0) scale(3);
+        border-radius: 100;
+    }
+    25% {
+        transform: translateZ(60px) scale(1.2);
+        border-radius: 100%;
+    }
+    50% {
+        transform: translateZ(80px) scale(2);
+        border-radius: 60%;
+    }
+    75% {
+        transform: translateZ(50px) scale(3);
+        border-radius: 50%;
+    }
+}
+

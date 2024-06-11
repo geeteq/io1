@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IO|1</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .circle {
+    fill: none;
+    stroke: url(#grad1);
+    stroke-width: 0.1;
+  }
+
+  .container {
+    animation: rotate 10s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+</head>
+
+<script>
+function nextPage() {
+        window.open("mandala.html", "_blank");
+}
+</script>
+
+<body onclick="nextPage()">
+  <div class="container">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <!-- neon pink: #FC0FC0 -->
+        <linearGradient id="grad1" x1="40%" y1="10%" x2="100%" y2="100%">
+          <stop offset="10%" style="stop-color: red; stop-opacity: 1" />
+          <stop offset="30%" style="stop-color: orange; stop-opacity: 1" />
+          <stop offset="40%" style="stop-color: yellow; stop-opacity: 9" />
+          <stop offset="70%" style="stop-color: green; stop-opacity: 1" />
+          <stop offset="90%" style="stop-color: blue; stop-opacity: 1" />
+          <stop offset="45%" style="stop-color: pink; stop-opacity: 1" />
+          <stop offset="45%" style="stop-color: white; stop-opacity: 1" />
+        </linearGradient>
+      </defs>
+      <!-- Iterations -->
+      <g transform="translate(100,100)">
+        <!-- First 10 iterations -->
+        <g transform="scale(1)">
+          <circle class="circle" r="40"></circle>
+          <circle class="circle" r="40" transform="rotate(60) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(120) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(180) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(240) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(300) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(360) translate(40,0)"></circle>
+        </g>
+        <g transform="scale(1.618)">
+          <circle class="circle" r="40"></circle>
+          <circle class="circle" r="40" transform="rotate(60) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(120) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(180) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(240) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(300) translate(40,0)"></circle>
+          <circle class="circle" r="40" transform="rotate(360) translate(40,0)"></circle>
+        </g>
+        <!-- Additional iterations -->
+        <!-- Continue adding iterations, scaling each group by 1.618 -->
+      </g>
+    </svg>
+  </div>
+</body>
+</html>
+

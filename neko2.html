@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO|1</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .square {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('https://io1.ca/manekineko.jpg');
+            background-size: cover;
+            animation: fall linear infinite, rotate 2s infinite alternate;
+        }
+
+        @keyframes fall {
+            0% { top: -50px; }
+            100% { top: 100vh; }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(30deg); }
+            100% { transform: rotate(-30deg); }
+        }
+    </style>
+</head>
+
+<script>
+function nextPage() {
+	window.open("delorean.html", "_blank");
+}
+</script>
+
+<body onclick="nextPage()">
+    <div class="container"></div>
+    <script>
+
+        
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.container');
+            const numSquares = 50;
+
+            for (let i = 0; i < numSquares; i++) {
+                const square = document.createElement('div');
+                square.classList.add('square');
+
+                // Random horizontal position
+                square.style.left = Math.random() * 100 + 'vw';
+
+                // Random falling duration and delay
+                const fallDuration = 5 + Math.random() * 5; // Duration between 5s and 10s
+                const delay = Math.random() * 5; // Delay up to 5s
+
+                square.style.animationDuration = `${fallDuration}s, 2s`;
+                square.style.animationDelay = `${delay}s, ${Math.random() * 2}s`;
+
+                container.appendChild(square);
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,185 @@
+body {
+    background-color: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.mandala-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+.mandala {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.layer1 {
+    animation: rotate1 20s infinite linear;
+}
+
+.layer2 {
+    animation: rotate2 25s infinite linear;
+}
+
+.layer3 {
+    animation: rotate3 30s infinite linear;
+}
+
+.layer4 {
+    animation: rotate4 35s infinite linear;
+}
+
+.circle, .square, .triangle, .hexagon {
+    margin: 20px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff0000, #00ff00, #0000ff);
+    background-size: 400%;
+    animation: glow 2s infinite, color-change 6s infinite;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.square {
+    border-radius: 10%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid;
+    background: none;
+    position: relative;
+}
+
+.triangle::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid;
+    background: none;
+}
+
+.hexagon {
+    width: 50px;
+    height: 29px;
+    background: inherit;
+    position: relative;
+    margin: 0;
+    display: inline-block;
+}
+
+.hexagon::before, .hexagon::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+}
+
+.hexagon::before {
+    bottom: 100%;
+    border-bottom: 14.5px solid;
+}
+
+.hexagon::after {
+    top: 100%;
+    width: 0;
+    border-top: 14.5px solid;
+}
+
+.large {
+    width: 60px;
+    height: 60px;
+}
+
+.medium {
+    width: 50px;
+    height: 50px;
+}
+
+.small {
+    width: 40px;
+    height: 40px;
+}
+
+.tiny {
+    width: 30px;
+    height: 17px;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px #fff, 0 0 15px #ff00ff, 0 0 30px #00ffff, 0 0 50px #ff0000, 0 0 75px #00ff00, 0 0 100px #0000ff;
+    }
+    50% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ff0000, 0 0 90px #00ff00, 0 0 120px #0000ff;
+    }
+}
+
+@keyframes color-change {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes rotate1 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+@keyframes rotate3 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes rotate4 {
+    0% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

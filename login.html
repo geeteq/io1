@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO|1</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            perspective: 1000px;
+        }
+        #terminal-container {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            padding: 30px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 10px #00FF00;
+            transform: rotateX(13deg) rotateY(-20deg);
+        }
+        .cursor {
+            display: inline-block;
+            background-color: #00FF00;
+            width: 10px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .cursor {
+            animation: blink 1s step-start infinite;
+        }
+        input, button {
+            background-color: black;
+            color: #00FF00;
+            border: none;
+            border-bottom: 1px solid #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            outline: none;
+            margin-top: 10px;
+        }
+        button {
+            margin-left: 10px;
+        }
+        #submit-btn {
+            background-image: url('https://io1.ca/giphy.gif');
+            background-size: cover;
+            width: 210px;
+            height: 210px;
+            transition: all 0.5s ease;
+	    float:right;
+        }
+        #submit-btn.shrink {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal-container">
+        <div id="terminal"></div>
+        <div class="cursor" id="cursor"></div>
+        <div id="input-container" style="display: none;">
+            <div>
+                <span>Type your login: </span>
+                <input type="text" id="name-input" />
+            </div>
+            <div id="password-prompt" style="display: none; margin-top: 10px;">
+                <span>Password: </span>
+                <input type="password" id="password-input" />
+            </div>
+            <div id="submit-container" style="display: none; margin-top: 10px;">
+                <button type="button" id="submit-btn" onclick="submitForm()"><!--no text on submit--></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const text = "Hello, welcome to [ IO|1 ]....🪭🪭⚡️⚡️🪭🪭⚡️⋚⋛⋌⊴⊭⊗⊝⊞⊠≑⧰⧮⧕⧑⧴CONNECT#$>>>";
+        let index = 0;
+        const terminal = document.getElementById('terminal');
+        const cursor = document.getElementById('cursor');
+        const inputContainer = document.getElementById('input-container');
+        const nameInput = document.getElementById('name-input');
+        const passwordPrompt = document.getElementById('password-prompt');
+        const submitContainer = document.getElementById('submit-container');
+        const submitBtn = document.getElementById('submit-btn');
+
+        function type() {
+            if (index < text.length) {
+                terminal.innerHTML += text[index];
+                index++;
+                setTimeout(type, 150);
+            } else {
+                cursor.style.display = 'none';
+                inputContainer.style.display = 'block';
+                nameInput.focus();
+                nameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        passwordPrompt.style.display = 'block';
+                        passwordPrompt.querySelector('input').focus();
+                    }
+                });
+                passwordPrompt.querySelector('input').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        submitContainer.style.display = 'block';
+                        submitBtn.focus();
+                    }
+                });
+            }
+        }
+
+        function submitForm() {
+            alert('Name submitted: ' + nameInput.value + '\\nPassword submitted: ' + passwordPrompt.querySelector('input').value);
+            submitBtn.classList.add('shrink');
+        }
+
+        window.onload = type;
+    </script>
+</body>
+</html>
+
